@@ -1,0 +1,50 @@
+{
+  "name": "company-escape",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "client": "cd client && npm start",
+    "build": "cd client && npm run build && npm run build-storybook",
+    "storybook": "cd client && npm run storybook",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\" \"npm run storybook\"",
+    "dev:server": "npm run build && cd .. && npm start",
+    "server": "nodemon server.js",
+    "start": "node server.js",
+    "heroku-prebuild": "cd client && npm ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/virtualescapes/company-escape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/virtualescapes/company-escape/issues"
+  },
+  "homepage": "https://github.com/virtualescapes/company-escape#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "eslint": "^7.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.8",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint --fix",
+    "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.5"
+  }
+}
