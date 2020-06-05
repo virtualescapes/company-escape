@@ -20,6 +20,7 @@ const MailNavigationItem = styled.div`
   margin-right: 30px;
   padding: 5px;
   border-radius: 10px;
+  cursor: pointer;
   > * {
     margin-right: 5px;
   }
