@@ -21,5 +21,12 @@ module.exports = {
   plugins: ['prettier', 'react'],
   rules: {
     'prettier/prettier': 'error',
+    'react/self-closing-comp': [
+      'error',
+      {
+        component: true,
+        html: true,
+      },
+    ],
   },
 };
