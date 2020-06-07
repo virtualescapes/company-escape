@@ -1,10 +1,10 @@
 import React from 'react';
 
-import MailHeader from '../components/Desktop/Email/MailHeader';
+import Mail from '../components/Desktop/Email/Mail';
 
 export default {
-  title: 'MailHeader',
-  component: MailHeader,
+  title: 'Mail',
+  component: Mail,
 };
 
-export const Gelesen = () => <MailHeader />;
+export const Gelesen = () => <Mail />;

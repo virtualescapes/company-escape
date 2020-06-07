@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import MailSendenIcon from './MailSendenIcon';
 import MailGesendetIcon from './MailGesendetIcon';
 import MailGelesenIcon from './MailGelesenIcon';
 import MailUngelesenIcon from './MailUngelesenIcon';
+import { MailNavigationContext } from '../../contexts/MailNavigationContext';
 
 const Container = styled.div`
   display: flex;
@@ -27,7 +28,9 @@ const MailNavigationItem = styled.div`
 `;
 
 export default function MailNavigation() {
-  const [activeNavigation, setActiveNavigation] = useState('gelesen');
+  const [activeNavigation, setActiveNavigation] = useContext(
+    MailNavigationContext
+  );
 
   return (
     <Container>
