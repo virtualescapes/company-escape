@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export const MailNavigationContext = createContext();
 
 export const MailNavigationProvider = ({ children }) => {
-  const [activeNavigation, setActiveNavigation] = useState('senden');
+  const [activeNavigation, setActiveNavigation] = useState('gelesen');
 
   return (
     <MailNavigationContext.Provider
