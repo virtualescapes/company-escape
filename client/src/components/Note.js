@@ -1,20 +1,18 @@
 import styled from '@emotion/styled';
 import React from 'react';
+import PropType from 'prop-types';
 import { keyframes } from '@emotion/core';
 
 const typing = keyframes` 
 0% {
   width: 0%;
-  opacity:0;
 }
 1%{
-  opacity:1;
+  opacity: 1;
 }
-
 100% {
   width: 100%;
-  opacity:1;
-  
+  opacity: 1;
 }
 
 `;
@@ -69,42 +67,36 @@ const List = styled.div`
 const ListText = styled.li`
   list-style: none;
   display: inline-block;
-  padding: 10px 10px 12px 80px;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  animation: ${typing} 5s steps(50);
-  animation-fill-mode: forwards;
-  animation-delay: 0.5s;
-  animation-iteration-count: 1;
   opacity: 0;
+  animation: ${typing} 5s steps(50) forwards ${({ delay }) => `${delay}s`};
 `;
 
-const ListTextSecond = styled(ListText)`
-  animation-delay: 3s;
-  opacity: 0;
-`;
-const ListTextThird = styled(ListText)`
-  animation-delay: 5s;
-  opacity: 0;
-`;
-
-export default function Note() {
+export default function Note({ title, content }) {
+  let animationDelay = 1;
   return (
     <NoteContainer>
       <NoteBlock>
-        <NoteTitle>Notizzettel</NoteTitle>
-        <List>
-          <ListText>Frühstück</ListText>
-        </List>
-        <List>
-          <ListTextSecond>Sport :(</ListTextSecond>
-        </List>
-        <List>
-          <ListTextThird>Konzern zerschlagen und die Welt retten</ListTextThird>
-        </List>
+        <NoteTitle>{title ? title : 'Notizzettel'}</NoteTitle>
+        {content
+          ? content.map((zeile) => {
+              return (
+                <List key={zeile}>
+                  <ListText key={zeile} delay={animationDelay++}>
+                    {zeile}
+                  </ListText>
+                </List>
+              );
+            })
+          : ''}
       </NoteBlock>
     </NoteContainer>
   );
 }
+
+Note.propTypes = {
+  title: PropType.string,
+  content: PropType.array,
+};
