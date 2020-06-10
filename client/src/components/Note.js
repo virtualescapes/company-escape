@@ -40,7 +40,7 @@ const NoteTitle = styled.h2`
 `;
 
 const List = styled.div`
-  position: relative; /* so our red line will be positioned correctly */
+  position: relative;
   color: #555;
   height: 35px;
   font-size: 1.1rem;
