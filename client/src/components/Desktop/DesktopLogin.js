@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import PB from '../../assets/desktop-pb.jpg';
 
@@ -10,7 +10,7 @@ const DesktopContainer = styled(FullWrapper)`
   align-items: center;
 `;
 
-const LoginField = styled.div`
+const LoginField = styled.form`
   display: flex;
   flex-flow: column;
   width: 20%;
@@ -60,6 +60,18 @@ const LoginFieldFooter = styled.div`
 const Button = styled.button``;
 
 export default function DesktopLogin() {
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (password === 'HARRYPOTTER') {
+      return alert('password is correct');
+    } else {
+      return alert('wrong password');
+    }
+  };
+
   return (
     <DesktopContainer background={'grey'}>
       <LoginField>
@@ -68,10 +80,15 @@ export default function DesktopLogin() {
           <ProfileName>Sarah</ProfileName>
         </LoginFieldHeader>
         <LoginFieldBody>
-          <PasswordInput type="password" placeholder="Enter Password..." />
+          <PasswordInput
+            value={password}
+            type="password"
+            placeholder="Enter Password..."
+            onChange={(event) => setPassword(event.target.value)}
+          />
         </LoginFieldBody>
         <LoginFieldFooter>
-          <Button>Login</Button>
+          <Button onClick={handleSubmit}>Login</Button>
         </LoginFieldFooter>
       </LoginField>
     </DesktopContainer>
