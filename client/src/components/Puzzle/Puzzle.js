@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Draggable from 'react-draggable';
+import Piece1 from '../../assets/puzzle-pieces/16.png';
 import Piece2 from '../../assets/puzzle-pieces/2.png';
 import Piece3 from '../../assets/puzzle-pieces/3.png';
 import Piece4 from '../../assets/puzzle-pieces/4.png';
@@ -15,7 +16,6 @@ import Piece12 from '../../assets/puzzle-pieces/12.png';
 import Piece13 from '../../assets/puzzle-pieces/13.png';
 import Piece14 from '../../assets/puzzle-pieces/14.png';
 import Piece15 from '../../assets/puzzle-pieces/15.png';
-import Piece16 from '../../assets/puzzle-pieces/16.png';
 
 const PuzzleBoard = styled.div`
   display: flex;
@@ -35,20 +35,20 @@ const PuzzlePiece = styled.div`
 `;
 
 let pieces = [
+  Piece1,
   Piece2,
-  Piece11,
-  Piece6,
-  Piece7,
-  Piece16,
-  Piece8,
-  Piece9,
-  Piece10,
-  Piece12,
-  Piece13,
-  Piece14,
   Piece3,
   Piece4,
   Piece5,
+  Piece6,
+  Piece7,
+  Piece8,
+  Piece9,
+  Piece10,
+  Piece11,
+  Piece12,
+  Piece13,
+  Piece14,
   Piece15,
 ];
 
