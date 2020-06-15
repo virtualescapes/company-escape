@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Draggable from 'react-draggable';
-import FullWrapper from '../FullWrapper';
-import Piece1 from '../../assets/puzzle-pieces/1.png';
 import Piece2 from '../../assets/puzzle-pieces/2.png';
 import Piece3 from '../../assets/puzzle-pieces/3.png';
 import Piece4 from '../../assets/puzzle-pieces/4.png';
@@ -23,47 +21,53 @@ const PuzzleBoard = styled.div`
   display: flex;
   flex-flow: wrap;
   background: lightgrey;
-  width: 50%;
+  width: 50vw;
+  height: 50vw;
 `;
 
-const PuzzlePiece = styled.img`
-  width: 25%;
+const PuzzlePiece = styled.div`
+  width: calc(25% - 10px);
+  height: calc(25% -10px);
+  background: url(${(props) => props.background});
   background-repeat: no-repeat;
-  padding: 5px;
+  background-size: auto 100%;
+  margin: 5px;
 `;
 
-const pieces = [
-  Piece1,
+let pieces = [
   Piece2,
-  Piece3,
-  Piece4,
-  Piece5,
+  Piece11,
   Piece6,
   Piece7,
+  Piece16,
   Piece8,
   Piece9,
   Piece10,
-  Piece11,
   Piece12,
   Piece13,
   Piece14,
+  Piece3,
+  Piece4,
+  Piece5,
   Piece15,
-  Piece16,
 ];
+
+function shuffle(pieces) {
+  pieces.sort(() => Math.random() - 0.5);
+}
+shuffle(pieces);
 
 function Puzzle() {
   return (
-    <FullWrapper background={'grey'}>
-      <PuzzleBoard>
-        {pieces.map((piece) => {
-          return (
-            <Draggable key={piece}>
-              <PuzzlePiece src={piece} />
-            </Draggable>
-          );
-        })}
-      </PuzzleBoard>
-    </FullWrapper>
+    <PuzzleBoard>
+      {pieces.map((piece) => {
+        return (
+          <Draggable key={piece}>
+            <PuzzlePiece background={piece} />
+          </Draggable>
+        );
+      })}
+    </PuzzleBoard>
   );
 }
 export default Puzzle;
