@@ -58,11 +58,14 @@ function shuffle(pieces) {
 shuffle(pieces);
 
 function Puzzle() {
+  setTimeout(function () {
+    window.location.reload(true);
+  }, 90000);
   return (
     <PuzzleBoard>
       {pieces.map((piece) => {
         return (
-          <Draggable key={piece}>
+          <Draggable key={piece} grid={[25, 25]}>
             <PuzzlePiece background={piece} />
           </Draggable>
         );
@@ -70,4 +73,5 @@ function Puzzle() {
     </PuzzleBoard>
   );
 }
+
 export default Puzzle;
