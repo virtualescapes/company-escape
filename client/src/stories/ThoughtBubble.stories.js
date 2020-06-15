@@ -1,5 +1,5 @@
 import React from 'react';
-import ThoughtBubble from '../components/ToughtBubble';
+import ThoughtBubble from '../components/ThoughtBubble';
 
 export default {
   title: 'ThoughtBubble',
