@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import StartMenuSVG from '../../assets/desktop-icons/start_menu.svg';
 
 import FullWrapper from '../FullWrapper';
+import ProgramIcon from './ProgramIcon';
 
 const DesktopWrapper = styled(FullWrapper)`
   display: flex;
@@ -14,6 +15,9 @@ const ProgramArea = styled.div`
   background: lightblue;
   flex-grow: 1;
   padding: 20px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
 `;
 
 const TaskBar = styled.div`
@@ -42,7 +46,9 @@ export default function Desktop() {
 
   return (
     <DesktopWrapper>
-      <ProgramArea>Program</ProgramArea>
+      <ProgramArea>
+        <ProgramIcon name={'Tux'} icon={StartMenuSVG} />
+      </ProgramArea>
       {startMenuIsOpen && <StartMenu>This is the StartMenu</StartMenu>}
       <TaskBar>
         <StartMenuButton onClick={toggleStartMenuIsOpen} src={StartMenuSVG} />
