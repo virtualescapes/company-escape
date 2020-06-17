@@ -15,9 +15,8 @@ function GlobalStyles() {
           font-family: 'Roboto Mono', monospace;
           font-size: 16px;
           margin: 0px;
+          padding: 0px;
           background: ${theme.background};
-          height: 100%;
-          width: 100vw;
         }
       `}
     />
