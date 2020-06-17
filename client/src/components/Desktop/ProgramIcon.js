@@ -14,9 +14,9 @@ const Name = styled.div`
   text-align: center;
 `;
 
-export default function ProgramIcon({ icon, name }) {
+export default function ProgramIcon({ icon, name, onProgramIconClick }) {
   return (
-    <ProgramIconWrapper>
+    <ProgramIconWrapper onClick={onProgramIconClick}>
       <Icon src={icon} />
       <Name>{name}</Name>
     </ProgramIconWrapper>
@@ -26,4 +26,5 @@ export default function ProgramIcon({ icon, name }) {
 ProgramIcon.propTypes = {
   icon: PropTypes.any,
   name: PropTypes.string,
+  onProgramIconClick: PropTypes.func,
 };

@@ -44,10 +44,18 @@ export default function Desktop() {
     setStartMenuIsOpen(!startMenuIsOpen);
   };
 
+  const handleProgramIconClick = () => {
+    console.log("I've been clicked!");
+  };
+
   return (
     <DesktopWrapper>
       <ProgramArea>
-        <ProgramIcon name={'Tux'} icon={StartMenuSVG} />
+        <ProgramIcon
+          name={'Tux'}
+          icon={StartMenuSVG}
+          onProgramIconClick={handleProgramIconClick}
+        />
       </ProgramArea>
       {startMenuIsOpen && <StartMenu>This is the StartMenu</StartMenu>}
       <TaskBar>
