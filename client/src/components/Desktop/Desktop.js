@@ -21,16 +21,31 @@ const TaskBar = styled.div`
   padding: 5px;
 `;
 
+const StartMenu = styled.div`
+  width: 20%;
+  position: absolute;
+  bottom: 60px;
+  background: white;
+`;
+
 const StartMenuButton = styled.img`
-  width: 45px;
+  height: 45px;
+  cursor: pointer;
 `;
 
 export default function Desktop() {
+  const [startMenuIsOpen, setStartMenuIsOpen] = React.useState(false);
+
+  const toggleStartMenuIsOpen = () => {
+    setStartMenuIsOpen(!startMenuIsOpen);
+  };
+
   return (
     <DesktopWrapper>
       <ProgramArea>Program</ProgramArea>
+      {startMenuIsOpen && <StartMenu>This is the StartMenu</StartMenu>}
       <TaskBar>
-        <StartMenuButton src={StartMenuSVG} />
+        <StartMenuButton onClick={toggleStartMenuIsOpen} src={StartMenuSVG} />
       </TaskBar>
     </DesktopWrapper>
   );
