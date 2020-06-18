@@ -1,23 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropType from 'prop-types';
 import search from '../../../assets/social-media/icon_search.png';
-import profile from '../../../assets/social-media/profile.png';
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  flex-flow: column nowrap;
-  background: #fafafa;
-  width: 100vw;
-  height: 100vh;
-`;
+import sebastian from '../../../assets/social-media/sebastian.jpg';
+import FinstagramPosts from '../social-media/FinstagramPosts';
 
 const Header = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   background: #ffffff;
-  height: 10%;
   width: 100vw;
   border-bottom: 1px solid #dbdbdb;
 `;
@@ -33,6 +25,8 @@ const SearchBar = styled.div`
   border-radius: 5px;
   border: 1px solid #dbdbdb;
   font-size: 12px;
+  margin: 12px;
+  padding: 5px;
 `;
 
 const SearchInput = styled.input`
@@ -49,6 +43,15 @@ const SearchInput = styled.input`
 const SearchIcon = styled.img`
   background: url(${(props) => props.src}) no-repeat fill;
   height: 60%;
+`;
+
+const Content = styled.div`
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  background: #fafafa;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const ProfileSection = styled.div`
@@ -69,9 +72,22 @@ const ProfileInfo = styled.div`
   color: #262626;
 `;
 
-function Insta() {
+const user = {
+  name: 'Sebastian',
+  image: sebastian,
+  posts: '2',
+  followers: '123',
+  following: '24',
+};
+
+const PostsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+function Finstagram({ posts }) {
   return (
-    <Wrapper>
+    <>
       <Header>
         Instagram
         <SearchBar>
@@ -80,14 +96,25 @@ function Insta() {
         </SearchBar>
         Icons
       </Header>
-      <ProfileSection>
-        <ProfileImage src={profile} />
-        <ProfileInfo>Sarah</ProfileInfo>
-        <ProfileInfo>0 Posts</ProfileInfo>
-        <ProfileInfo>10 Followers</ProfileInfo>
-        <ProfileInfo>12 Following</ProfileInfo>
-      </ProfileSection>
-    </Wrapper>
+      <Content>
+        <ProfileSection>
+          <>
+            <ProfileImage src={user.image} />
+            <ProfileInfo>{user.name}</ProfileInfo>
+            <ProfileInfo>{user.posts} Posts</ProfileInfo>
+            <ProfileInfo>{user.followers} Followers</ProfileInfo>
+            <ProfileInfo>{user.following} Following</ProfileInfo>
+          </>
+        </ProfileSection>
+        <PostsWrapper>
+          <FinstagramPosts posts={posts} />
+        </PostsWrapper>
+      </Content>
+    </>
   );
 }
-export default Insta;
+export default Finstagram;
+
+Finstagram.propTypes = {
+  posts: PropType.array,
+};
