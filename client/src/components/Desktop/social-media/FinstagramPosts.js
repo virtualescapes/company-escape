@@ -22,14 +22,14 @@ const PostImage = styled.img`
   width: 100%;
 `;
 
-const Test = styled.div`
+const PostsWrapper = styled.div`
   display: flex;
   justify-content: center;
 `;
 
 function FinstagramPosts({ posts }) {
   return (
-    <Test>
+    <PostsWrapper>
       <PostSection>
         {posts.map((post) => {
           return (
@@ -39,7 +39,7 @@ function FinstagramPosts({ posts }) {
           );
         })}
       </PostSection>
-    </Test>
+    </PostsWrapper>
   );
 }
 
