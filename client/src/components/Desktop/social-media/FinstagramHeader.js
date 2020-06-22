@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Search from '../../../assets/social-media/icon_search.png';
 import Home from '../../../assets/social-media/finstaHomeIcon.svg';
 import Chat from '../../../assets/social-media/finstaChatIcon.svg';
-import FinstagramModal from './FinstagramModal';
+import FinstagramChatModal from './FinstagramChatModal';
 import { FinstagramChatModalContext } from '../../contexts/FinstagramChatModalContext';
 
 const Header = styled.div`
@@ -95,7 +95,7 @@ export default function FinstagramHeader({ user }) {
           <ProfileIcon src={user.image} />
         </IconContainer>
       </IconsContainer>
-      {activeChatModal ? <FinstagramModal /> : null}
+      {activeChatModal ? <FinstagramChatModal /> : null}
     </Header>
   );
 }

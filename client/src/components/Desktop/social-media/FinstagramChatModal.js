@@ -16,7 +16,7 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export default function FinstagramModal() {
+export default function FinstagramChatModal() {
   return (
     <Container>
       <Chat />
