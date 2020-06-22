@@ -1,14 +1,19 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import search from '../../../assets/social-media/icon_search.png';
+import PropTypes from 'prop-types';
+import Search from '../../../assets/social-media/icon_search.png';
+import Home from '../../../assets/social-media/finstaHomeIcon.svg';
+import Chat from '../../../assets/social-media/finstaChatIcon.svg';
 
 const Header = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   background: #ffffff;
   width: 100vw;
   border-bottom: 1px solid #dbdbdb;
+  font-size: 1.5rem;
+  font-family: 'Dancing Script', cursive;
 `;
 
 const SearchBar = styled.div`
@@ -37,20 +42,53 @@ const SearchInput = styled.input`
   }
 `;
 
+const IconsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 12px;
+`;
+const IconContainer = styled.div`
+  width: 26px;
+  height: 26px;
+  margin-right: 20px;
+`;
+const Icon = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+const ProfileIcon = styled(Icon)`
+  border-radius: 50%;
+`;
+
 const SearchIcon = styled.img`
   background: url(${(props) => props.src}) no-repeat fill;
   height: 60%;
 `;
 
-export default function FinstagramHeader() {
+export default function FinstagramHeader({ user }) {
   return (
     <Header>
       Finstagram
       <SearchBar>
-        <SearchIcon src={search} />
+        <SearchIcon src={Search} />
         <SearchInput placeholder="Suchen" />
       </SearchBar>
-      Icons
+      <IconsContainer>
+        <IconContainer>
+          <Icon src={Home} />
+        </IconContainer>
+        <IconContainer>
+          <Icon src={Chat} />
+        </IconContainer>
+        <IconContainer>
+          <ProfileIcon src={user.image} />
+        </IconContainer>
+      </IconsContainer>
     </Header>
   );
 }
+
+FinstagramHeader.propTypes = {
+  user: PropTypes.object,
+};

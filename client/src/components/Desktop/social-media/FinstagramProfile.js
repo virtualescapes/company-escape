@@ -34,6 +34,7 @@ const ProfileName = styled.div`
 
 const ProfileInfoWrapper = styled.div`
   display: flex;
+  margin-bottom: 20px;
 `;
 
 const ProfileInfo = styled.div`
@@ -54,6 +55,7 @@ export default function FinstagramProfile({ user }) {
           <ProfileInfo>{user.followers} Followers</ProfileInfo>
           <ProfileInfo>{user.following} Following</ProfileInfo>
         </ProfileInfoWrapper>
+        {user.about}
       </FlexboxColumn>
     </ProfileSection>
   );

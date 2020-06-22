@@ -22,7 +22,7 @@ const PostsWrapper = styled.div`
 function Finstagram({ posts, user }) {
   return (
     <>
-      <FinstagramHeader />
+      <FinstagramHeader user={user} />
       <Content>
         <FinstagramProfile user={user} />
         <PostsWrapper>
