@@ -4,6 +4,7 @@ import PropType from 'prop-types';
 import FinstagramPosts from '../social-media/FinstagramPosts';
 import FinstagramHeader from './FinstagramHeader';
 import FinstagramProfile from './FinstagramProfile';
+import { FinstagramChatModalProvider } from '../../contexts/FinstagramChatModalContext';
 
 const Content = styled.div`
   display: flex;
@@ -22,13 +23,15 @@ const PostsWrapper = styled.div`
 function Finstagram({ posts, user }) {
   return (
     <>
-      <FinstagramHeader user={user} />
-      <Content>
-        <FinstagramProfile user={user} />
-        <PostsWrapper>
-          <FinstagramPosts posts={posts} />
-        </PostsWrapper>
-      </Content>
+      <FinstagramChatModalProvider>
+        <FinstagramHeader user={user} />
+        <Content>
+          <FinstagramProfile user={user} />
+          <PostsWrapper>
+            <FinstagramPosts posts={posts} />
+          </PostsWrapper>
+        </Content>
+      </FinstagramChatModalProvider>
     </>
   );
 }
