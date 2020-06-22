@@ -5,6 +5,7 @@ import FinstagramPosts from '../social-media/FinstagramPosts';
 import FinstagramHeader from './FinstagramHeader';
 import FinstagramProfile from './FinstagramProfile';
 import { FinstagramChatModalProvider } from '../../contexts/FinstagramChatModalContext';
+import { FinstagramPostModalProvider } from '../../contexts/FinstagramPostModalContext';
 
 const Content = styled.div`
   display: flex;
@@ -24,13 +25,15 @@ function Finstagram({ posts, user }) {
   return (
     <>
       <FinstagramChatModalProvider>
-        <FinstagramHeader user={user} />
-        <Content>
-          <FinstagramProfile user={user} />
-          <PostsWrapper>
-            <FinstagramPosts posts={posts} />
-          </PostsWrapper>
-        </Content>
+        <FinstagramPostModalProvider>
+          <FinstagramHeader user={user} />
+          <Content>
+            <FinstagramProfile user={user} />
+            <PostsWrapper>
+              <FinstagramPosts posts={posts} />
+            </PostsWrapper>
+          </Content>
+        </FinstagramPostModalProvider>
       </FinstagramChatModalProvider>
     </>
   );

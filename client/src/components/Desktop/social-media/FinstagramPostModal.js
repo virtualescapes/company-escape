@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import Chat from './Chat';
 import FinstagramCloseModalIcon from '../../utils/FinstagramCloseModalIcon';
+import PropType from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -16,11 +16,29 @@ const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export default function FinstagramModal() {
+const Post = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 600px;
+`;
+
+const PostImage = styled.img`
+  width: 100%;
+`;
+
+export default function FinstagramPostModal({ post }) {
+  console.log(post, typeof post);
   return (
     <Container>
-      <Chat />
+      <Post>
+        <PostImage src={post} />
+      </Post>
       <FinstagramCloseModalIcon />
     </Container>
   );
 }
+
+FinstagramPostModal.propTypes = {
+  post: PropType.string,
+};
