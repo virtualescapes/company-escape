@@ -4,8 +4,12 @@ import styled from '@emotion/styled';
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 600px;
+  height: 80%;
   background-color: #efefef;
+  overflow-y: scroll;
+  padding: 20px;
+  border-radius: 5%;
 `;
 
 const ChatWrapper = styled.div`
@@ -19,6 +23,7 @@ const Message = styled.div`
   padding: 5px;
   border-radius: 10px;
   background-color: lightgray;
+  opacity: 1;
 `;
 
 export default function Chat() {

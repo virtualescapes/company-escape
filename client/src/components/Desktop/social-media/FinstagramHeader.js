@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import Search from '../../../assets/social-media/icon_search.png';
 import Home from '../../../assets/social-media/finstaHomeIcon.svg';
 import Chat from '../../../assets/social-media/finstaChatIcon.svg';
+import FinstagramModal from './FinstagramModal';
+import { FinstagramChatModalContext } from '../../contexts/FinstagramChatModalContext';
 
 const Header = styled.div`
   display: flex;
@@ -67,6 +69,14 @@ const SearchIcon = styled.img`
 `;
 
 export default function FinstagramHeader({ user }) {
+  const [activeChatModal, setActiveChatModal] = useContext(
+    FinstagramChatModalContext
+  );
+
+  const openChatModal = () => {
+    setActiveChatModal(true);
+  };
+
   return (
     <Header>
       Finstagram
@@ -78,13 +88,14 @@ export default function FinstagramHeader({ user }) {
         <IconContainer>
           <Icon src={Home} />
         </IconContainer>
-        <IconContainer>
+        <IconContainer onClick={openChatModal}>
           <Icon src={Chat} />
         </IconContainer>
         <IconContainer>
           <ProfileIcon src={user.image} />
         </IconContainer>
       </IconsContainer>
+      {activeChatModal ? <FinstagramModal /> : null}
     </Header>
   );
 }
