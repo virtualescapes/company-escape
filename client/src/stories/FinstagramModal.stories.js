@@ -1,9 +1,9 @@
 import React from 'react';
-import FinstagramModal from '../components/Desktop/social-media/FinstagramModal';
+import FinstagramPostModal from '../components/Desktop/social-media/FinstagramPostModal';
 
 export default {
   title: 'Modal',
-  component: FinstagramModal,
+  component: FinstagramPostModal,
 };
 
-export const Modal = () => <FinstagramModal />;
+export const Modal = () => <FinstagramPostModal />;
