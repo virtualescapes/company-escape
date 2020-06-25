@@ -28,7 +28,6 @@ const PostImage = styled.img`
 `;
 
 export default function FinstagramPostModal({ post }) {
-  console.log(post, typeof post);
   return (
     <Container>
       <Post>

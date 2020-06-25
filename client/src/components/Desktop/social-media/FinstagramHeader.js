@@ -15,6 +15,10 @@ const Header = styled.div`
   width: 100vw;
   border-bottom: 1px solid #dbdbdb;
   font-size: 1.5rem;
+`;
+
+const Title = styled.h1`
+  font-size: 1.5rem;
   font-family: 'Dancing Script', cursive;
 `;
 
@@ -79,7 +83,7 @@ export default function FinstagramHeader({ user }) {
 
   return (
     <Header>
-      Finstagram
+      <Title>Finstagram</Title>
       <SearchBar>
         <SearchIcon src={Search} />
         <SearchInput placeholder="Suchen" />
