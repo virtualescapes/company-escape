@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from '@emotion/styled';
 import PropType from 'prop-types';
+import { FinstagramPostModalContext } from '../../contexts/FinstagramPostModalContext';
+import FinstagramPostModal from './FinstagramPostModal';
 
 const PostSection = styled.div`
   display: flex;
@@ -28,17 +30,28 @@ const PostsWrapper = styled.div`
 `;
 
 function FinstagramPosts({ posts }) {
+  const [activePostModal, setActivePostModal] = useContext(
+    FinstagramPostModalContext
+  );
+  const [post, setPost] = useState(null);
+
+  const openPostModal = (post) => {
+    setActivePostModal(true);
+    setPost(post);
+  };
+
   return (
     <PostsWrapper>
       <PostSection>
         {posts.map((post) => {
           return (
-            <Post key={post}>
+            <Post key={post} onClick={() => openPostModal(post)}>
               <PostImage src={post} />
             </Post>
           );
         })}
       </PostSection>
+      {activePostModal ? <FinstagramPostModal post={post} /> : null}
     </PostsWrapper>
   );
 }
