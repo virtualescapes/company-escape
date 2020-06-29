@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import FinstagramCloseModalIcon from '../../utils/FinstagramCloseModalIcon';
 import PropType from 'prop-types';
+import { FinstagramPostModalContext } from '../../contexts/FinstagramPostModalContext';
 
 const Container = styled.div`
   display: flex;
@@ -12,7 +13,6 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
@@ -28,8 +28,16 @@ const PostImage = styled.img`
 `;
 
 export default function FinstagramPostModal({ post }) {
+  const [, setActivePostModal] = useContext(FinstagramPostModalContext);
+
+  const closeModal = (event) => {
+    if (event.target.classList.contains('modal')) {
+      setActivePostModal(false);
+    }
+  };
+
   return (
-    <Container>
+    <Container className={'modal'} onClick={closeModal}>
       <Post>
         <PostImage src={post} />
       </Post>
