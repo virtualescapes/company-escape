@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import Chat from './Chat';
 import FinstagramCloseModalIcon from '../../utils/FinstagramCloseModalIcon';
+import { FinstagramChatModalContext } from '../../contexts/FinstagramChatModalContext';
 
 const Container = styled.div`
   display: flex;
@@ -17,8 +18,16 @@ const Container = styled.div`
 `;
 
 export default function FinstagramChatModal() {
+  const [, setActiveChatModal] = useContext(FinstagramChatModalContext);
+
+  const closeModal = (event) => {
+    if (event.target.classList.contains('modal')) {
+      setActiveChatModal(false);
+    }
+  };
+
   return (
-    <Container>
+    <Container className={'modal'} onClick={closeModal}>
       <Chat />
       <FinstagramCloseModalIcon />
     </Container>
