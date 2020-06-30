@@ -31,13 +31,13 @@ export default function FinstagramPostModal({ post }) {
   const [, setActivePostModal] = useContext(FinstagramPostModalContext);
 
   const closeModal = (event) => {
-    if (event.target.classList.contains('modal')) {
+    if (event.target === event.currentTarget) {
       setActivePostModal(false);
     }
   };
 
   return (
-    <Container className={'modal'} onClick={closeModal}>
+    <Container onClick={closeModal}>
       <Post>
         <PostImage src={post} />
       </Post>

@@ -21,13 +21,13 @@ export default function FinstagramChatModal() {
   const [, setActiveChatModal] = useContext(FinstagramChatModalContext);
 
   const closeModal = (event) => {
-    if (event.target.classList.contains('modal')) {
+    if (event.target === event.currentTarget) {
       setActiveChatModal(false);
     }
   };
 
   return (
-    <Container className={'modal'} onClick={closeModal}>
+    <Container onClick={closeModal}>
       <Chat />
       <FinstagramCloseModalIcon />
     </Container>
