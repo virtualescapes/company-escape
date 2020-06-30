@@ -43,26 +43,28 @@ export default function Chat() {
       author: 'Florian',
       date: '14:13',
       message:
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamfdsf',
     },
     {
       author: 'Florian',
       date: '14:15',
       message:
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamfdas<ffsdg',
     },
     {
       author: 'Susanne',
       date: '14:12',
       message:
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diamgdsgdsg',
     },
   ];
+
+  // key needs to changed to chat.id, when chat is generated from DB
 
   return (
     <Wrapper>
       {chatHistory?.map((chat) => (
-        <ChatWrapper author={chat.author} key={chat}>
+        <ChatWrapper author={chat.author} key={chat.date}>
           <div>{chat.date}</div>
           <Message>
             {chat.author}:
