@@ -4,31 +4,55 @@ import PropType from 'prop-types';
 import Background from '../../assets/mobile/email-pattern-custom.png';
 import PartyImg from '../../assets/mobile/party.jpg';
 import Read from '../../assets/mobile/checks.svg';
+import Mobile from '../../assets/mobile/mockup.svg';
+
+const Mockup = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 810px;
+  width: 430px;
+  background-image: url(${Mobile});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: stretch;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 367px;
+  background: #0c6156;
+  z-index: 1;
+  top: 84px;
+  border-radius: 5px 5px 0% 0%;
+`;
+
+const ScrollContainer = styled.div`
+  overflow: scroll;
+  ::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  height: 640px;
+  margin-top: 15px;
+  position: absolute;
+`;
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-`;
-
-const Header = styled.div`
-  display: flex;
-  align-items: center;
-  height: 10%;
-  width: 100%;
-  background: #0c6156;
+  padding-top: 52px;
+  width: 365px;
 `;
 
 const ImgWrapper = styled.div`
   width: 40px;
   height: 40px;
-  margin: 0px 10px 0px 10px;
+  margin: 0px 15px 0px 15px;
 `;
 
 const GroupImg = styled.img`
@@ -45,8 +69,6 @@ const GroupName = styled.p`
 const ChatWindow = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
   background-image: url(${Background});
   background-attachment: fixed;
   background-size: fill;
@@ -54,7 +76,7 @@ const ChatWindow = styled.div`
 
 const MessageWrapper = styled.div`
   position: relative;
-  max-width: 45%;
+  max-width: 40%;
   min-width: 20%;
   margin: 20px;
   align-self: ${({ author }) =>
@@ -70,6 +92,8 @@ const Message = styled.div`
   background-color: ${({ author }) =>
     author === 'Sarah' ? '#e2ffc8' : '#FFFFFF'};
   opacity: 1;
+
+  box-shadow: 0px 1px 1px 0px grey;
 
   :before {
     content: '';
@@ -115,25 +139,29 @@ const TimeStamp = styled.div`
 
 export default function WhatsUp({ chat }) {
   return (
-    <Container>
+    <Mockup>
       <Header>
         <ImgWrapper>
           <GroupImg src={PartyImg} />
         </ImgWrapper>
         <GroupName>Promotion Parteeeey 🎉🕺🏻🍸</GroupName>
       </Header>
-      <ChatWindow>
-        {chat?.map((chat) => (
-          <MessageWrapper author={chat.author} key={chat.date}>
-            <Message author={chat.author}>
-              <AuthorName color={chat.color}>{chat.author}</AuthorName>
-              {chat.message}
-              <TimeStamp author={chat.author}>{chat.date}</TimeStamp>
-            </Message>
-          </MessageWrapper>
-        ))}
-      </ChatWindow>
-    </Container>
+      <ScrollContainer>
+        <Container>
+          <ChatWindow>
+            {chat?.map((chat) => (
+              <MessageWrapper author={chat.author} key={chat.date}>
+                <Message author={chat.author}>
+                  <AuthorName color={chat.color}>{chat.author}</AuthorName>
+                  {chat.message}
+                  <TimeStamp author={chat.author}>{chat.date}</TimeStamp>
+                </Message>
+              </MessageWrapper>
+            ))}
+          </ChatWindow>
+        </Container>
+      </ScrollContainer>
+    </Mockup>
   );
 }
 

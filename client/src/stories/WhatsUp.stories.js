@@ -32,6 +32,12 @@ const chatHistory = [
       'ich hab den längsten und du bist ein dummer Spastiiiisdfisdgksg jsfgjkkg ksklfdslfd lasflsdflsdflsdflsdf',
     color: 'green',
   },
+  {
+    author: 'Sarah',
+    date: '14:10 PM',
+    message: 'geiloooo, ich freu mich! ',
+    color: 'blue',
+  },
 ];
 
 export const WhatsUpChat = () => <WhatsUp chat={chatHistory} />;
