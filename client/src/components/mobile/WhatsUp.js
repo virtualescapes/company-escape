@@ -5,6 +5,7 @@ import Background from '../../assets/mobile/email-pattern-custom.png';
 import PartyImg from '../../assets/mobile/party.jpg';
 import Read from '../../assets/mobile/checks.svg';
 import Mobile from '../../assets/mobile/mockup.svg';
+import Arrow from '../../assets/mobile/icon-send.svg';
 
 const Mockup = styled.div`
   position: relative;
@@ -92,7 +93,6 @@ const Message = styled.div`
   background-color: ${({ author }) =>
     author === 'Sarah' ? '#e2ffc8' : '#FFFFFF'};
   opacity: 1;
-
   box-shadow: 0px 1px 1px 0px grey;
 
   :before {
@@ -137,7 +137,52 @@ const TimeStamp = styled.div`
   }
 `;
 
+const WritingContainer = styled.form`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding: 5px;
+`;
+
+const WritingArea = styled.input`
+  background-color: #ffffff;
+  width: 80%;
+  height: 50px;
+  border-radius: 30px;
+  box-shadow: 0px 1px 1px 0px grey;
+  padding: 18px;
+  align-self: center;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  ::-webkit-input-placeholder {
+    text-align: left;
+    font-size: 18px;
+  }
+`;
+
+const Send = styled.button`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0c6156;
+  border: none;
+  outline: none;
+  box-shadow: 0px 1px 1px 0px grey;
+  background-image: url(${Arrow});
+  background-repeat: no-repeat;
+  background-size: fill;
+  background-position: center;
+  &:active {
+    transform: translateY(1px);
+  }
+`;
+
 export default function WhatsUp({ chat }) {
+  async function handleSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
     <Mockup>
       <Header>
@@ -158,6 +203,9 @@ export default function WhatsUp({ chat }) {
                 </Message>
               </MessageWrapper>
             ))}
+            <WritingContainer onSubmit={handleSubmit}>
+              <WritingArea placeholder="Schreib etwas" /> <Send />
+            </WritingContainer>
           </ChatWindow>
         </Container>
       </ScrollContainer>
