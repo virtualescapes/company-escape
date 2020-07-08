@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import PropType from 'prop-types';
 import Draggable from 'react-draggable';
 import Piece1 from '../../assets/puzzle-pieces/16.png';
 import Piece2 from '../../assets/puzzle-pieces/2.png';
@@ -16,11 +17,21 @@ import Piece12 from '../../assets/puzzle-pieces/12.png';
 import Piece13 from '../../assets/puzzle-pieces/13.png';
 import Piece14 from '../../assets/puzzle-pieces/14.png';
 import Piece15 from '../../assets/puzzle-pieces/15.png';
+import NavigationArrow from '../NavigationArrow';
+import Countdown from './Countdown';
+
+const PuzzleContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+`;
 
 const PuzzleBoard = styled.div`
   display: flex;
   flex-flow: wrap;
-  background: lightgrey;
+  margin-top: 15px;
   width: 50vw;
   height: 50vw;
 `;
@@ -57,21 +68,29 @@ function shuffle(pieces) {
 }
 shuffle(pieces);
 
-function Puzzle() {
+function Puzzle({ closeModal }) {
   setTimeout(function () {
     window.location.reload(true);
   }, 90000);
   return (
-    <PuzzleBoard>
-      {pieces.map((piece) => {
-        return (
-          <Draggable key={piece} grid={[25, 25]}>
-            <PuzzlePiece background={piece} />
-          </Draggable>
-        );
-      })}
-    </PuzzleBoard>
+    <PuzzleContainer>
+      <NavigationArrow previousPage={closeModal} />
+      <PuzzleBoard>
+        {pieces.map((piece) => {
+          return (
+            <Draggable key={piece} grid={[25, 25]}>
+              <PuzzlePiece background={piece} />
+            </Draggable>
+          );
+        })}
+      </PuzzleBoard>
+      <Countdown />
+    </PuzzleContainer>
   );
 }
 
 export default Puzzle;
+
+Puzzle.propTypes = {
+  closeModal: PropType.func,
+};
