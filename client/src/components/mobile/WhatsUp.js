@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 import PropType from 'prop-types';
 import Background from '../../assets/mobile/email-pattern-custom.png';
 import PartyImg from '../../assets/mobile/party.jpg';
 import Read from '../../assets/mobile/checks.svg';
-import Mobile from '../../assets/mobile/mockup.svg';
+import Mobile from '../../assets/mobile/smartphone-mockup.png';
+import { WhatsUpModalContext } from '../contexts/WhatsUpModalContext';
+
+const MockupContainer = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+`;
 
 const Mockup = styled.div`
   position: relative;
@@ -138,30 +148,38 @@ const TimeStamp = styled.div`
 `;
 
 export default function WhatsUp({ chat }) {
+  const [, setActiveWhatsUpModal] = useContext(WhatsUpModalContext);
+  const closeModal = (event) => {
+    if (event.target === event.currentTarget) {
+      setActiveWhatsUpModal(false);
+    }
+  };
   return (
-    <Mockup>
-      <Header>
-        <ImgWrapper>
-          <GroupImg src={PartyImg} />
-        </ImgWrapper>
-        <GroupName>Promotion Parteeeey 🎉🕺🏻🍸</GroupName>
-      </Header>
-      <ScrollContainer>
-        <Container>
-          <ChatWindow>
-            {chat?.map((chat) => (
-              <MessageWrapper author={chat.author} key={chat.date}>
-                <Message author={chat.author}>
-                  <AuthorName color={chat.color}>{chat.author}</AuthorName>
-                  {chat.message}
-                  <TimeStamp author={chat.author}>{chat.date}</TimeStamp>
-                </Message>
-              </MessageWrapper>
-            ))}
-          </ChatWindow>
-        </Container>
-      </ScrollContainer>
-    </Mockup>
+    <MockupContainer onClick={closeModal}>
+      <Mockup>
+        <Header>
+          <ImgWrapper>
+            <GroupImg src={PartyImg} />
+          </ImgWrapper>
+          <GroupName>Promotion Parteeeey 🎉🕺🏻🍸</GroupName>
+        </Header>
+        <ScrollContainer>
+          <Container>
+            <ChatWindow>
+              {chat?.map((chat) => (
+                <MessageWrapper author={chat.author} key={chat.date}>
+                  <Message author={chat.author}>
+                    <AuthorName color={chat.color}>{chat.author}</AuthorName>
+                    {chat.message}
+                    <TimeStamp author={chat.author}>{chat.date}</TimeStamp>
+                  </Message>
+                </MessageWrapper>
+              ))}
+            </ChatWindow>
+          </Container>
+        </ScrollContainer>
+      </Mockup>
+    </MockupContainer>
   );
 }
 
