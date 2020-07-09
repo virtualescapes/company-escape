@@ -5,6 +5,9 @@ import Welcome from './pages/Welcome';
 import Wohnzimmer from './pages/Wohnzimmer';
 import Schreibtisch from './pages/Schreibtisch';
 import Laptop from './pages/Laptop';
+import Kueche from './pages/Kueche';
+import Esstisch from './pages/Esstisch';
+import { WhatsUpModalProvider } from './components/contexts/WhatsUpModalContext';
 
 function App() {
   return (
@@ -31,6 +34,18 @@ function App() {
             <Laptop />
           </Route>
         </Switch>
+        <Switch>
+          <Route exact path="/kueche">
+            <Kueche />
+          </Route>
+        </Switch>
+        <WhatsUpModalProvider>
+          <Switch>
+            <Route exact path="/kueche/esstisch">
+              <Esstisch />
+            </Route>
+          </Switch>
+        </WhatsUpModalProvider>
       </Router>
     </>
   );
