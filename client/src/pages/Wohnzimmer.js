@@ -2,15 +2,9 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from '@emotion/styled';
 import WohnzimmerImg from '../assets/apartment/wohnzimmer_kleiner.png';
+import Background from '../components/Background';
 import PageNavigationHover from '../components/utils/PageNavigationHover';
 import Footprint from '../components/Footprint';
-
-const Container = styled.div`
-  height: 100vh;
-  background-image: url(${WohnzimmerImg});
-  background-size: cover;
-  position: relative;
-`;
 
 const AnimationContainer = styled.div`
   height: 570px;
@@ -33,10 +27,10 @@ const KitchenFootprint = styled(Footprint)`
 `;
 
 const SchreibtischHover = styled(PageNavigationHover)`
-  height: 300px;
-  width: 300px;
+  height: 25vw;
+  width: 25vw;
   right: 0%;
-  bottom: 5%;
+  bottom: 20%;
   transform: rotate(6deg);
   border-radius: 50%;
 `;
@@ -48,13 +42,13 @@ export default function Wohnzimmer() {
   };
 
   return (
-    <Container>
+    <Background path={WohnzimmerImg}>
       <AnimationContainer onClick={() => handleClick('/kueche')}>
         <KitchenFootprint />
       </AnimationContainer>
       <SchreibtischHover
         onClick={() => handleClick('/wohnzimmer/schreibtisch')}
       />
-    </Container>
+    </Background>
   );
 }
