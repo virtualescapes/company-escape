@@ -6,10 +6,10 @@ import FootImg from '../assets/foot.svg';
 
 const walking = keyframes`
     0% {
-      opacity: 0;
+      opacity: 0
     }
     50% {
-     opacity: 1
+     opacity: 0.5
      }
     60% {
     opacity: 0

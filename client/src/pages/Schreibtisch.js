@@ -2,29 +2,24 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Puzzle from '../components/Puzzle/Puzzle';
 import SchreibtischImg from '../assets/apartment/schreibtisch_nah_kleiner.jpg';
+import Background from '../components/Background';
 import PageNavigationHover from '../components/utils/PageNavigationHover';
 import NavigationArrow from '../components/NavigationArrow';
 import { useHistory } from 'react-router-dom';
 
-const Container = styled.div`
-  height: 100vh;
-  background-image: url(${SchreibtischImg});
-  background-size: cover;
-`;
-
 const PapierkorbHover = styled(PageNavigationHover)`
-  height: 320px;
-  width: 320px;
+  height: 20vw;
+  width: 20vw;
   left: 3%;
-  bottom: -10%;
+  bottom: 10%;
   border-radius: 50%;
 `;
 
 const LaptopHover = styled(PageNavigationHover)`
-  height: 500px;
-  width: 500px;
-  left: 32%;
-  top: 6%;
+  height: 30vw;
+  width: 30vw;
+  left: 34%;
+  top: 5%;
   border-radius: 50%;
 `;
 
@@ -36,7 +31,7 @@ export default function Schreibtisch() {
   };
 
   return (
-    <Container>
+    <Background path={SchreibtischImg}>
       {trash ? (
         <Puzzle closeModal={() => setTrash(false)} />
       ) : (
@@ -46,6 +41,6 @@ export default function Schreibtisch() {
           <NavigationArrow previousPage={() => handleClick('')} />
         </>
       )}
-    </Container>
+    </Background>
   );
 }
